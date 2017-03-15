@@ -1,0 +1,371 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="cache-control" content="no-cache">
+    <title>FullScreen API | Demo</title>
+    <!--<link href="fullscreen.css" rel="stylesheet"/>-->
+    <style>
+
+      html{
+        background-color: #aaa;
+      }
+      body{
+        margin:10px auto;
+        max-width: 800px;
+      }
+      .videos{
+        line-height: 0;
+      }
+      .videos video{
+        margin: 1%;
+        width: 48%;
+        border:solid 5px #f0f0f0;
+        box-sizing: border-box;
+      }
+      .ctrl{
+        display: none;
+      }
+
+
+
+      /*.fullscreen{
+        background-color: #222;
+        display: table!important;
+      }
+      .fullscreen .videos{
+        display: table-cell;
+        height: 100%;
+        vertical-align: middle;
+      }
+      .fullscreen .videos video{
+        display: none;
+      }
+      .fullscreen .videos video.active{
+        margin-left: 100px;
+        display:block;
+        width: calc(100% - 200px);
+      }
+      .fullscreen .ctrl{
+        display: block;
+      }
+      .fullscreen .exit,
+      .fullscreen .prev,
+      .fullscreen .next{
+        position: fixed;
+        height: 50px;
+        border: none;
+        background-color: #00aaff;
+        color: #fff;
+        width:100px;
+      }
+      .fullscreen .prev{
+        top: calc(50% - 25px);
+        left: 0;
+      }
+      .fullscreen .next{
+        top: calc(50% - 25px);
+        right: 0;
+      }
+      .fullscreen .exit{
+        top: 0;
+        right: 0;
+        background-color: red;
+      }
+      .fullscreen [disabled]{
+        background-color: #005588;
+        color: #002244;
+      }*/
+
+
+      :fullscreen{
+        background-color: #222;
+        display: table!important;
+      }
+      :fullscreen .videos{
+        display: table-cell;
+        height: 100%;
+        vertical-align: middle;
+      }
+      :fullscreen .videos video{
+        display: none;
+      }
+      :fullscreen .videos video.active{
+        margin-left: 100px;
+        display:block;
+        width: calc(100% - 200px);
+      }
+      :fullscreen .ctrl{
+        display: block;
+      }
+      :fullscreen .exit,
+      :fullscreen .prev,
+      :fullscreen .next{
+        position: fixed;
+        height: 50px;
+        border: none;
+        background-color: #00aaff;
+        color: #fff;
+        width:100px;
+      }
+      :fullscreen .prev{
+        top: calc(50% - 25px);
+        left: 0;
+      }
+      :fullscreen .next{
+        top: calc(50% - 25px);
+        right: 0;
+      }
+      :fullscreen .exit{
+        top: 0;
+        right: 0;
+        background-color: red;
+      }
+      :fullscreen [disabled]{
+        background-color: #005588;
+        color: #002244;
+      }
+
+
+
+      :-webkit-full-screen{
+        background-color: #222;
+        display: table!important;
+      }
+      :-webkit-full-screen .videos{
+        display: table-cell;
+        height: 100%;
+        vertical-align: middle;
+      }
+      :-webkit-full-screen .videos video{
+        display: none;
+      }
+      :-webkit-full-screen .videos video.active{
+        margin-left: 100px;
+        display:block;
+        width: calc(100% - 200px);
+      }
+      :-webkit-full-screen .ctrl{
+        display: block;
+      }
+      :-webkit-full-screen .exit,
+      :-webkit-full-screen .prev,
+      :-webkit-full-screen .next{
+        position: fixed;
+        height: 50px;
+        border: none;
+        background-color: #00aaff;
+        color: #fff;
+        width:100px;
+      }
+      :-webkit-full-screen .prev{
+        top: calc(50% - 25px);
+        left: 0;
+      }
+      :-webkit-full-screen .next{
+        top: calc(50% - 25px);
+        right: 0;
+      }
+      :-webkit-full-screen .exit{
+        top: 0;
+        right: 0;
+        background-color: red;
+      }
+      :-webkit-full-screen [disabled]{
+        background-color: #005588;
+        color: #002244;
+      }
+
+
+
+      :-moz-full-screen{
+        background-color: #222;
+        display: table!important;
+      }
+      :-moz-full-screen .videos{
+        display: table-cell;
+        height: 100%;
+        vertical-align: middle;
+      }
+      :-moz-full-screen .videos video{
+        display: none;
+      }
+      :-moz-full-screen .videos video.active{
+        margin-left: 100px;
+        display:block;
+        width: calc(100% - 200px);
+      }
+      :-moz-full-screen .ctrl{
+        display: block;
+      }
+      :-moz-full-screen .exit,
+      :-moz-full-screen .prev,
+      :-moz-full-screen .next{
+        position: fixed;
+        height: 50px;
+        border: none;
+        background-color: #00aaff;
+        color: #fff;
+        width:100px;
+      }
+      :-moz-full-screen .prev{
+        top: calc(50% - 25px);
+        left: 0;
+      }
+      :-moz-full-screen .next{
+        top: calc(50% - 25px);
+        right: 0;
+      }
+      :-moz-full-screen .exit{
+        top: 0;
+        right: 0;
+        background-color: red;
+      }
+      :-moz-full-screen [disabled]{
+        background-color: #005588;
+        color: #002244;
+      }
+
+
+
+      :-ms-fullscreen{
+        background-color: #222;
+        display: table!important;
+      }
+      :-ms-fullscreen .videos{
+        display: table-cell;
+        height: 100%;
+        vertical-align: middle;
+      }
+      :-ms-fullscreen .videos video{
+        display: none;
+      }
+      :-ms-fullscreen .videos video.active{
+        margin-left: 100px;
+        display:block;
+        width: calc(100% - 200px);
+      }
+      :-ms-fullscreen .ctrl{
+        display: block;
+      }
+      :-ms-fullscreen .exit,
+      :-ms-fullscreen .prev,
+      :-ms-fullscreen .next{
+        position: fixed;
+        height: 50px;
+        border: none;
+        background-color: #00aaff;
+        color: #fff;
+        width:100px;
+      }
+      :-ms-fullscreen .prev{
+        top: calc(50% - 25px);
+        left: 0;
+      }
+      :-ms-fullscreen .next{
+        top: calc(50% - 25px);
+        right: 0;
+      }
+      :-ms-fullscreen .exit{
+        top: 0;
+        right: 0;
+        background-color: red;
+      }
+      :-ms-fullscreen [disabled]{
+        background-color: #005588;
+        color: #002244;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="videos">
+        <video loop onClick="activateVideo(this)">
+          <source src="video/christmas.mp4"/>
+        </video><video loop onClick="activateVideo(this)">
+          <source src="video/dog.mp4"/>
+        </video><video loop onClick="activateVideo(this)">
+          <source src="video/ski.mp4"/>
+        </video><video loop onClick="activateVideo(this)">
+          <source src="video/sibuya.mp4"/>
+        </video>
+      </div>
+      <div class="ctrl">
+        <button class="exit" onClick="document.exitFullscreen()">EXIT</button>
+        <button class="prev" onClick="prev()">PREV</button>
+        <button class="next" onClick="next()">NEXT</button>
+      </div>
+    </div>
+    <script src="fullscreen.js"></script>
+    <script>
+      var elPrev = document.querySelector('.prev');
+      var elNext = document.querySelector('.next');
+      var currentVideo;
+
+      document.addEventListener('fullscreenchange', function(){
+        if(document.fullscreenElement){
+          currentVideo.play();
+        }
+        else {
+          deactivateVideo();
+        }
+      }, false);
+
+      document.body.addEventListener('keydown', function(event){
+        if(document.fullscreenElement){
+          if(+event.keyCode === 39){
+            next();
+          }
+          else if(+event.keyCode === 37){
+            prev();
+          }
+        }
+      });
+
+      function next(){
+        activateVideo(currentVideo.nextSibling);
+      }
+
+      function prev(){
+        activateVideo(currentVideo.previousSibling);
+      }
+
+      function activateVideo(video){
+        if(!isVideo(video)){
+          return;
+        }
+
+        deactivateVideo();
+        currentVideo = video;
+        currentVideo.classList.add('active');
+
+        elNext.disabled = !isVideo(currentVideo.nextSibling);
+        elPrev.disabled = !isVideo(currentVideo.previousSibling);
+
+        if(document.fullscreenElement){
+          currentVideo.play();
+        }
+        else {
+          var promise = document.querySelector('.container').requestFullscreen();
+          console.log('requestFullScreen promise', promise);
+        }
+
+      }
+
+      function deactivateVideo(){
+        if(currentVideo){
+          currentVideo.pause();
+          currentVideo.classList.remove('active');
+          currentVideo.controls=false;
+        }
+      }
+
+      function isVideo(el){
+        return el && el.tagName === 'VIDEO';
+      }
+    </script>
+
+  </body>
+</html>

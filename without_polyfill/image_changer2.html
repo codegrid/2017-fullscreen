@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="cache-control" content="no-cache">
+    <title>FullScreen API | Demo</title>
+    <!--<link href="fullscreen.css" rel="stylesheet"/>-->
+    <style>
+      body{
+        margin: 0 auto;
+        max-width: 600px;
+      }
+      .thumbnail img{
+        width: 33%;
+      }
+      button{
+        padding: 4px;
+        width: 150px;
+      }
+      .preview{
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <img class="preview" onClick="changeImage()"/>
+    <div class="thumbnail">
+      <img src="img/ship01.jpg" onClick="changeImage()"/><img src="img/dinosaur.jpg" onClick="changeImage()"/><img src="img/tank.jpg" onClick="changeImage()"/>
+    </div>
+    <button onClick="slideShow(0)">Fullscreen</button>
+
+    <p>「Fullscreen」ボタンで全画面表示した後、画像をクリックすると、全画面化対象要素を切り替えようとしますが全画面化が解除されるのみで、次画像の全画面表示が無視されます</p>
+
+    <script src="fullscreen.js"></script>
+    <script>
+      var elPreview = document.querySelector('.preview');
+      var images = document.querySelectorAll('.thumbnail img');
+      var imageNo = 0;
+      function slideShow(_imageNo){
+        imageNo = _imageNo;
+        images[imageNo].requestFullscreen();
+      }
+      function changeImage(){
+        if(!document.fullscreenElement){
+          return;
+        }
+        document.exitFullscreen();
+        imageNo = imageNo === images.length -1 ? 0 : imageNo + 1;
+        images[imageNo].requestFullscreen();
+      }
+    </script>
+  </body>
+</html>

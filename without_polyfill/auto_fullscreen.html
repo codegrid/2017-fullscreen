@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="cache-control" content="no-cache">
+    <title>FullScreen API | Demo</title>
+    <!--<link href="fullscreen.css" rel="stylesheet"/>-->
+    <style>
+      body{
+        margin: 0;
+      }
+      .console-Area{
+        padding: 16px;
+        min-height: 100px;
+        background-color: #000;
+        color: #ffffcc;
+      }
+    </style>
+  </head>
+  <body onLoad="fullscreen()">
+    <div class="console-Area"></div>
+    <script src="console.js"></script>
+    <script src="fullscreen.js"></script>
+    <script>
+      document.addEventListener('fullscreenerror', function(event){
+        console.log('event.type:', event.type);
+        console.log('event.type:', event.srcElement.tagName);
+      }, false);
+
+      function fullscreen(){
+        setTimeout(function(){
+          document.body.requestFullscreen();
+          console.log('document.body.requestFullscreen()');
+        }, 500);
+      }
+    </script>
+
+  </body>
+</html>

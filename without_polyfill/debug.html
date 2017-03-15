@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="cache-control" content="no-cache">
+    <title>FullScreen API | Demo</title>
+    <!--<link href="fullscreen.css" rel="stylesheet"/>-->
+    <style>
+      body{
+        margin: 0 auto;
+        max-width: 600px;
+        color: #777;
+      }
+      video{
+        max-width: 50%;
+        cursor: pointer;
+      }
+      button{
+        padding: 4px;
+        width: 150px;
+      }
+      :-webkit-full-screen{
+        width: auto!important;
+      }
+      :-ms-fullscreen{
+        width: auto!important;
+      }
+
+      .nest{
+        padding: 50px;
+        background: #aaccff;
+      }
+      .nest > div{
+        padding: 50px;
+        background-color: red;
+      }
+      .nest > div > button{
+        display: none;
+      }
+      .nest.fullscreen > div > button{
+        display: inline-block;
+      }
+
+      .nest.fullscreen > button{
+        display: none;
+      }
+
+
+      ::-webkit-backdrop{
+        background-color: green;
+      }
+      ::-moz-backdrop{
+        background-color: green;
+      }
+      ::-ms-backdrop{
+        background-color: green;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <h3>mini</h3>
+    <div class="thumbnail">
+      <img src="img/warsman_mono.png" onClick="this.requestFullscreen()"/><img src="img/warsman_mono.png" onClick="this.requestFullscreen()"/><img src="img/warsman_mono.png" onClick="this.requestFullscreen()"/>
+    </div>
+
+    <h3>text</h3>
+    <div class="dummy" style="color:red">
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem
+    </div>
+    <button onClick="document.querySelector('div.dummy').requestFullscreen()">Fullscreen</button>
+
+
+    <h3>nest</h3>
+    <div class="nest">
+      <div>
+        <button onClick="document.querySelector('.nest > div').requestFullscreen()">Fullscreen</button>
+      </div>
+      <button onClick="document.querySelector('.nest').requestFullscreen()">Fullscreen</button>
+    </div>
+
+
+    <script src="fullscreen.js"></script>
+    <script>console.log(document.VENDOR_PREFIX);</script>
+  </body>
+</html>
