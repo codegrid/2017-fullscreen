@@ -12,9 +12,6 @@
   transform:none !important;
   object-fit: contain;
 }
-*:not(:root):-webkit-full-screen{
-  background-color: transparent;
-}
 
 *:not(:root):-moz-full-screen{
   position:fixed !important;

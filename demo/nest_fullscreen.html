@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="cache-control" content="no-cache">
+    <title>FullScreen API | Demo</title>
+    <link href="fullscreen.css" rel="stylesheet"/>
+    <style>
+      body{
+        margin: 0 auto;
+        max-width: 600px;
+        text-align: center
+      }
+      .thumbnail img{
+        width: 33%;
+        cursor: pointer;
+      }
+      #pxg{
+        width: 600px;
+        height: 75px;
+      }
+      video{
+        max-width: 50%;
+        cursor: pointer;
+      }
+      button{
+        padding: 4px;
+        width: 150px;
+      }
+      .parent{
+        padding: 20px;
+        background-color: #00aaff;
+      }
+      .child{
+        margin: 20px;
+        padding: 20px;
+        background-color: #aaccff;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <div class="parent">
+      <button
+        onClick="this.parentElement.requestFullscreen()"
+      >Fullscreen</button>
+
+      <div class="child">
+        <button
+          onClick="this.parentElement.requestFullscreen()"
+          disabled
+        >Fullscreen</button>
+      </div>
+    </div>
+    <script src="fullscreen.js"></script>
+    <script>
+      var parentBtn = document.querySelector('.parent > button');
+      var childBtn = document.querySelector('.child > button');
+      document.addEventListener('fullscreenchange', function(){
+        var el = document.fullscreenElement;
+        if(el){
+          if(el.classList.contains('parent')){
+            parentBtn.disabled = true;
+            childBtn.disabled = false;
+          }
+          else{
+            childBtn.disabled = true;
+          }
+        }
+        else {
+          parentBtn.disabled = false;
+          childBtn.disabled = true;
+        }
+      }, false);
+    </script>
+  </body>
+</html>
