@@ -21,7 +21,7 @@
      * element method
      */
     requestFullscreen: {
-      'webkit': 'webkitRequestFullScreen',
+      'webkit': 'webkitRequestFullscreen',
       'moz': 'mozRequestFullScreen',
       'ms': 'msRequestFullscreen'
     },
@@ -31,7 +31,7 @@
      */
 
     exitFullscreen: {
-      'webkit': 'webkitCancelFullScreen',
+      'webkit': 'webkitExitFullscreen',
       'moz': 'mozCancelFullScreen',
       'ms': 'msExitFullscreen'
     },
